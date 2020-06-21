@@ -7,7 +7,6 @@ const ArtGallery = props => {
     const tagStyle = { 
         color: "rgba(255, 255, 255, 1)", 
         fontSize: "14px", 
-        /* textShadow: "2px 2px 4px black", */
         textTransform: "uppercase",
         backgroundColor: "rgba(0, 0, 0, .5)", 
         padding: "2px",
@@ -18,7 +17,7 @@ const ArtGallery = props => {
         actions.create()
     },[actions])
     return(
-            <div className="container-fluid" >
+            <div className="container" >
                 <div className="row pl-5 pr-5 pt-4">
                     <div className="col-md-12 p-0 mt-1">
                         <div style={{display: "block"}}>

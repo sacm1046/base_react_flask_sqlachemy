@@ -1,176 +1,140 @@
-import React, { useState } from "react"
-import styled from "styled-components"
+import React from "react"
+import { Link } from 'react-router-dom'
 
-const Navbar = () => {
-    const [mobile, setMobile] = useState('')
-    const DIV_SPACE = styled.div`
-        width: 100%;
-        display: block;
-        @media only screen and (max-width: 992px) {
-            display: none;
-            width: 0;
-        }
-    `
-    const DIV = styled.div`
-        @keyframes fadeIn {
-            0% {opacity:0;}
-            100% {opacity:1;}
-        }
-        & .show{
-            display:none;     
-            }
-        & .hide {
-            .show{    
-                display:none;
-                @media only screen and (max-width: 992px) {
-                    background-color: rgba(255,255,255,.97);
-                    position: fixed;   
-                    top: 0;
-                    height: 100vh;
-                    width: 100vw;
-                    z-index: 100;
-                    display: flex;
-                    flex-direction: column;
-                    animation: fadeIn ease-out 250ms;
-                        div{
-                            height: 50%;
-                            margin:auto;
-                            width: 50vw;
-                            ul{
-                                list-style: none;
-                                padding: 0;
-                                text-align: center;
-                                li {
-                                    padding: 10px;
-                                    width: 100%;
-                                    a{
-                                        text-decoration: none;
-                                        color: rgba(0,0,0,0.7);
-                                        font-weight: 600;
-                                        transition: color .3s ease;
-                                        text-transform: uppercase;
-                                        &:hover{
-                                            color: red;
-                                        }
-                                    }
-                                }
-                            }
-                        span{
-                            display: flex;
-                            justify-content: flex-end;
-                            border: none;
-                                button{
-                                    background-color: transparent;
-                                    border: none;
-                                    font-size: 25px;
-                                    font-weight: 600;
-                                    color: black;                
-                                    outline: 0;
-                                    transition: color .3s ease;
-                                        &:hover, &:active{
-                                            color: red;
-                                            outline: 0;
-                                        }
-                                }         
-                        }
-                        }
-                }
-            }
-        }
-    }
-    `
-    const HAMBURGER = styled.button`
-        border: none;
-        outline: 0;
-        &:hover > span{
-            transform: scale(.95);
-        }
-        &:active{
-            border: none;
-            outline: 0;  
-        }
-
-    `
-    const DROPDOWN = styled.div`
-    @keyframes fadeIn {
-        0% {opacity:0;}
-        100% {opacity:1;}
-    }
-    text-align: right;
-    border-radius: 0;
-    border: none;
-    padding: 0;
-    top: 46px;
-    animation: fadeIn ease-out 250ms;
-    & a{
-        color: rgba(255,255,255,1);
-        background: rgba(52,58,64,0.98);
-        transition: all 250ms ease-out;
-        padding: 12px 20px;
-        &:hover{
-            background: rgba(52,58,64,0.95);
-            color: rgba(255,255,255,1);
-        }
-    }
-
-    `
-
+const Navbar = ({children}) => {
     return (
         <>
-            <DIV>
-                <div className={`${mobile}`}>
-                    <div className="show">
-                        <div>
-                            <span>
-                                <button onClick={() => setMobile('')}>✕</button>
-                            </span>
-                            <ul>
-                                <li><a onClick={() => setMobile('')} href="/">test 1 asdasdasdas asdasdasdaasdasdsd asdasd</a></li>
-                                <hr />
-                                <li><a onClick={() => setMobile('')} href="/">test 2</a></li>
-                                <hr />
-                                <li><a onClick={() => setMobile('')} href="/">test 3</a></li>
-                            </ul>
-                        </div>
+            <div className="fake">
+                <style jsx>{`
+                    .fake{
+                        background-color: white;
+                        height: 66px;
+                    }
+                `}</style>
+            </div>
+
+            <nav className="navbar navbar-light bg-light navbar-expand-lg fixed-top">
+                <div className="container">
+
+
+                    {/* Logo */}
+                    <Link to="/" className="navbar-brand">
+                        Logo
+                    </Link>
+
+
+                    {/* Hamburger Icon */}
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollapseid">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+
+
+                    {/* Mobile Menu */}
+                    <div className="collapse navbar-collapse" id="navbarcollapseid" >
+                        <ul className="navbar-nav d-lg-none">
+
+                            <li className="nav-item">
+                                <a className="nav-link" href="/">OPCION 1</a>
+                            </li>
+
+                            <li className="nav-item">
+                                {/* eslint-disable-next-line */}
+                                <a className="nav-link" data-toggle="collapse" data-target="#dropdown">DROPDOWN 1</a>
+                                <div className="collapse navbar-collapse" id="dropdown">
+                                    <ul className="navbar-nav" style={{ overflowY: "auto", height: "auto" }}>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="/" >SUB OPCION 1</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="/" >SUB OPCION 2</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link" href="/">OPCION 2</a>
+                            </li>
+
+                        </ul>
                     </div>
-                </div>
-            </DIV>
-            <nav name="fake-navbar" className="navbar navbar-expand-lg navbar-dark">
-                <div className="collapse navbar-collapse" id="">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top pl-5 pr-5">
-                <a className="navbar-brand" href="/">Logo</a>
-                <DIV_SPACE></DIV_SPACE>
-                <HAMBURGER className="navbar-toggler" onClick={() => setMobile('hide')} type="button" data-toggle="" data-target="" aria-controls="" aria-expanded="false" aria-label="">
-                    <span className="navbar-toggler-icon" />
-                </HAMBURGER>
-                <div className="collapse navbar-collapse">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="/w" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Dropdown
-                            </a>
-                            <DROPDOWN className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" href="/">Row</a>
-                                <a className="dropdown-item" href="/">Another action</a>
-                                <a className="dropdown-item" href="/">Something else here</a>
-                            </DROPDOWN>
-                        </li>
+
+
+                    {/* Desktop Menu */}
+                    <ul className="navbar-nav ml-auto d-none d-lg-flex">
+
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Link</a>
+                            <a className="nav-link" href="/">OPCION 1</a>
                         </li>
+
+                        <li className="nav-item dropdown">
+                            {/* eslint-disable-next-line */}
+                            <a className="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#dropdownDesktop" id="navbarDropdown">DROPDOWN 1</a>
+                            <div className="dropdown-menu dropdown-menu-right">
+                                <a className="nav-link" href="/" >SUB OPCION 1</a>
+                                <a className="nav-link" href="/" >SUB OPCION 2</a>
+                            </div>
+                        </li>
+
+                        <li className="nav-item">
+                            <a className="nav-link" href="/">OPCION 2</a>
+                        </li>
+
                     </ul>
+
+
                 </div>
+
+                {/* Styles Navbar */}
+                <style jsx>{`
+                    a{
+                        color: rgba(0,0,0,1);
+                        transition: color 400ms ease-in-out;
+                    }
+                    a:hover{
+                        color: rgba(32, 18, 18, 1);
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                    .dropdown-menu{
+                        top: 45px;
+                        padding: 0;
+                        border-radius: 0;
+                        border: 0;
+                        animation: fadeIn ease-out 350ms;
+
+                    }
+                    @keyframes fadeIn {
+                        0% {opacity:0;}
+                        100% {opacity:1;}
+                    }
+                    .dropdown-menu > a{
+                        color: #6c757d;
+                        padding: 10px;
+                        background-color: rgba(249, 249, 249, 1);  
+                        transition: all 350ms ease-in-out;
+                    }
+                    .dropdown-menu > a:active{
+                        background-color: rgba(249, 249, 249, 1);
+                    }
+                    .dropdown-menu > a:hover{
+                        background-color: rgba(243, 243, 243, 1);
+                    }
+                    .navbar-toggler, .navbar-toggler:active{
+                        border: 0 !important; 
+                        outline: 0 !important;
+                        background-color: rgba(249, 249, 249, 1);
+                        transition: all 350ms ease-in-out;
+                    }
+                    .navbar-toggler:hover{
+                        background-color: rgba(243, 243, 243, 1);
+                    }
+                `}</style>
             </nav>
+        
+            <div>
+                {children}
+            </div>
         </>
     )
 }
