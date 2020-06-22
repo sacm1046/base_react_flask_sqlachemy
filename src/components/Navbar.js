@@ -4,14 +4,7 @@ import { Link } from 'react-router-dom'
 const Navbar = ({children}) => {
     return (
         <>
-            <div className="fake">
-                <style jsx>{`
-                    .fake{
-                        background-color: white;
-                        height: 66px;
-                    }
-                `}</style>
-            </div>
+            <div className="fake"></div>
 
             <nav className="navbar navbar-light bg-light navbar-expand-lg fixed-top">
                 <div className="container">
@@ -86,7 +79,12 @@ const Navbar = ({children}) => {
                 </div>
 
                 {/* Styles Navbar */}
-                <style jsx>{`
+                <style jsx="true">{`
+                    .fake{
+                        background-color: red;
+                        height: 56px;
+
+                    }
                     a{
                         color: rgba(0,0,0,1);
                         transition: color 400ms ease-in-out;

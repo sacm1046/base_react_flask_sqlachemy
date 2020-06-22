@@ -17,9 +17,10 @@ const ArtGallery = props => {
         actions.create()
     },[actions])
     return(
-            <div className="container" >
-                <div className="row pl-5 pr-5 pt-4">
-                    <div className="col-md-12 p-0 mt-1">
+            <div className="container py-4" >
+                <h1 className="text-center">Galería</h1>
+                <div className="row m-0 mt-3">
+                    <div className="col-md-12 px-4">
                         <div style={{display: "block"}}>
                             <Gallery
                                 tagStyle={tagStyle}

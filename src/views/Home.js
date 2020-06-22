@@ -1,11 +1,12 @@
 import React from 'react';
-import Navbar from '../components/Navbar'
 import Gallery from '../components/Gallery'
+import Form from '../components/Form';
 
 const Home = props => {
     return (
         <>
             <Gallery />
+            <Form />
         </>
     )
 }
